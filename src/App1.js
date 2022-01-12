@@ -35,11 +35,11 @@ export default function App() {
 }
 
 // Error based displayed in different hierarchy
-export function App1() {
-  return (
-    <Error>
-      <Div text={null} />
-      <Div text={'test'} />
-    </Error>
-  );
-}
+// export default function App1() {
+//   return (
+//     <Error>
+//       <Div text={null} />
+//       <Div text={'test'} />
+//     </Error>
+//   );
+// }
