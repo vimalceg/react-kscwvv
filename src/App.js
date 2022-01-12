@@ -10,7 +10,7 @@ function api() {
 }
 let apiW = wrapPromise(api);
 function Test() {
-  // let a = apiW();
+  let a = apiW();
   return <div>{a}</div>;
 }
 export default function App() {
