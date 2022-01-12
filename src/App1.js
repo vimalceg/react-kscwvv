@@ -33,3 +33,14 @@ export default function App() {
     </React.Fragment>
   );
 }
+
+// Error based displayed in different hierarchy
+export default function App() {
+  return (
+    
+      <Error>
+        <Div text={null} />
+        <Div text={'test'} />
+      </Error>
+  );
+}
