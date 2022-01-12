@@ -4,7 +4,6 @@ export default function wrapPromise(fn) {
   let result;
   return () => {
     if (!promise) {
-      debugger;
       promise = fn();
     }
 
