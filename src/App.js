@@ -7,9 +7,14 @@ import wrapPromise from './utils/wrapPromise';
 import getTicket from './actions/getTicket';
 
 let getTicketW = wrapPromise(getTicket);
-function Test() {
-  let a = getTicketW();
-  return <div>{a}</div>;
+function TicketContainer() {
+  let ticket = getTicketW();
+  console.log(ticket);
+  return (
+    <div>
+      {ticket.id}-{ticket.subject}
+    </div>
+  );
 }
 export default function App() {
   return (
