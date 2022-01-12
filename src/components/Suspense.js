@@ -12,17 +12,13 @@ export default class Suspense extends React.Component {
       isError: true,
     };
   }
-  componentDidMount() {
-    console.log('mount...');
-  }
+  componentDidMount() {}
   componentDidCatch() {
-    console.log('catch...');
     setTimeout(() => {
       this.setState({ isError: false });
     }, 1000);
   }
   render() {
-    console.log('Suspense', this.state.isError, this.props.fallback);
     if (this.state.isError) {
       return this.props.fallback;
     }
