@@ -1,13 +1,21 @@
+/* Recall Error handling */
+/* DON"T USE try catch - imperative */
 import React from 'react';
-import { Suspense } from 'react';
-import './style.css';
-// import Suspense from './components/Suspense';
-import Loading from './components/Loading';
-import Ticket from './container/Ticket';
+
+function Div({ text }) {
+  try {
+    return <div>{text.toUpperCase()}</div>;
+  } catch (e) {
+    return <div>Error</div>;
+  }
+}
+
 export default function App() {
   return (
-    <Suspense fallback={<Loading />}>
-      <Ticket />
-    </Suspense>
+    <React.Fragment>
+      Functional
+      <Div text={null} />
+      <Div text={'test'} />
+    </React.Fragment>
   );
 }
