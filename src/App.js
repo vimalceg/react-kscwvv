@@ -3,14 +3,11 @@ import './style.css';
 import Suspense from './components/Suspense';
 import Loading from './components/Loading';
 import wrapPromise from './utils/wrapPromise';
-function api() {
-  return new Promise((res, rej) => {
-    setTimeout(() => res(1), 5000);
-  });
-}
-let apiW = wrapPromise(api);
+import getTicket from './actions/getTicket';
+
+let getTicket = wrapPromise(getTicket);
 function Test() {
-  let a = apiW();
+  let a = getTicket();
   return <div>{a}</div>;
 }
 export default function App() {
