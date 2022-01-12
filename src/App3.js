@@ -13,7 +13,6 @@ let AsyncTicket = (props) => {
       }, 2000);
     });
   }, []);
-  console.log('Component', isLoading, Component);
   if (isLoading || !Component) {
     return <div>JS loading...</div>;
   }
