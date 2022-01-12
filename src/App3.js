@@ -6,9 +6,10 @@ let async = () => {
     let [isLoading, setLoading] = useState(true);
     let [Component, setComponent] = useState(null);
     useEffect(() => {
-      import('../container/Ticket').then((res) => {
+      import('./container/Ticket').then((res) => {
         setLoading(false);
-        setComponent(res.Ticket);
+        console.log(res);
+        setComponent(res);
       });
     }, []);
     if (isLoading) return <div>JS loading...</div>;
