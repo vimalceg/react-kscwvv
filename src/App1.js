@@ -23,8 +23,13 @@ function Div({ text }) {
 
 export default function App() {
   return (
-    <Error>
-      <Div text={null} />
-    </Error>
+    <React.Fragment>
+      <Error>
+        <Div text={null} />
+      </Error>
+      <Error>
+        <Div text={'test'} />
+      </Error>
+    </React.Fragment>
   );
 }
