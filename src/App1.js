@@ -1,6 +1,30 @@
 /* Recall Error handling */
 import React from 'react';
 
+class Error extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  static getDerivedStateFromError(e) {
+    return { isError: true };
+  }
+  render() {
+    if (this.state.isError) {
+      return <div>Error</div>;
+    }
+    return this.props.children;
+  }
+}
+
+function Div({ text }) {
+  return <div>{text.toUpperCase()}</div>;
+}
+
 export default function App() {
-  return <div>App</div>;
+  return (
+    <Error>
+      <Div text={null} />
+    </Error>
+  );
 }
