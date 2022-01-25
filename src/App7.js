@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 function useCounter(pCount) {
   let [count, setCount] = useState(pCount);
-  function handleIncrement() {
-    setCount(count + 1);
-  }
+  let handleIncrement = useCallback(() => {
+    setCount((count) => count + 1);
+  }, []);
+
   return { count, handleIncrement };
 }
 let Counter = React.memo(({ count, handleIncrement }) => {
@@ -18,11 +19,15 @@ let Counter = React.memo(({ count, handleIncrement }) => {
 });
 let Switch = React.memo(({ state, toggle }) => {
   console.log('Render Switch');
-  return <div onClick={toggle}>{state ? 'ON' : 'OFF'}</div>;
+  return <div onClick={toggle}>{state ? 'ON' : 'OFFq'}</div>;
 });
 
 function CounterController({ count: propsCount = 0 }) {
-  let { count, handleIncrement } = useCounter(propsCount);
+  // let { count, handleIncrement } = useCounter(propsCount);
+  let [count, setCount] = useState(pCount);
+  let handleIncrement = useCallback(() => {
+    setCount((count) => count + 1);
+  }, []);
   let [state, setState] = useState(false);
   return (
     <>
