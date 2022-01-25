@@ -8,6 +8,7 @@ function useCounter(pCount) {
   return { count, handleIncrement };
 }
 function Counter({ count, handleIncrement }) {
+  console.log('Render Counter');
   return (
     <div>
       <span>Counter : {count}</span>
@@ -15,15 +16,25 @@ function Counter({ count, handleIncrement }) {
     </div>
   );
 }
+function Switch({ state, toggle }) {
+  console.log('Render Switch');
+  return <div onClick={toggle}>{state ? 'ON' : 'OFF'}</div>;
+}
 
 function CounterController({ count: propsCount = 0 }) {
   let { count, handleIncrement } = useCounter(propsCount);
-  return <Counter count={count} handleIncrement={handleIncrement} />;
+  let [state, setState] = useState(false);
+  return (
+    <>
+      <Switch state={state} toggle={() => setState(!state)} />
+      <Counter count={count} handleIncrement={handleIncrement} />
+    </>
+  );
 }
 export default function App() {
   return (
     <React.Fragment>
-      <Counter />
+      <CounterController />
     </React.Fragment>
   );
 }
