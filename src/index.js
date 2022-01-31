@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import App from './App7';
 
-function useSwitch({ checked: propsChecked }) {
+function useSwitch({ checked: propsChecked, onChange }) {
   let [checked, setChecked] = useState(propsChecked);
   function handleChange() {
     setChecked(!checked);
