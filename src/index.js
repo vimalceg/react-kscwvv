@@ -35,9 +35,7 @@ function SwitchController() {
     setCount(count + 1);
     if (count < 3) {
       console.log('call...');
-      setTimeout(() => {
-        setChecked(checked);
-      }, 1000);
+      setChecked(checked);
     }
   }
   return (
