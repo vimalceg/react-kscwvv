@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App7';
 
 function useSwitch({ checked: propsChecked, onChange }) {
   let [checked, setChecked] = useState(propsChecked);
-  function handleChange() {
-    setChecked(!checked);
-    onChange(!checked);
-  }
+  let handleChange = useCallback(
+    (checked) => {
+      setChecked(checked);
+      onChange(checked);
+    },
+    [onChange]
+  );
   useEffect(() => {
     setChecked(propsChecked);
-  }, [propsChecked != checked]);
+  }, [propsChecked]);
   return { checked, handleChange };
 }
 function Switch(props) {
@@ -23,24 +26,35 @@ function SwitchSke({ checked, onChange }) {
   return (
     <div>
       {checked ? 'true' : 'false'}
-      <span onClick={onChange}>Click</span>
+      <span onClick={onChange.bind(null, !checked)}>Click</span>
     </div>
   );
 }
 
 function SwitchController() {
   let [controllerChecked, setChecked] = useState(true);
-  let [count, setCount] = useState(0);
-  function handleSwitch(checked) {
-    setCount(count + 1);
-    if (count < 3) {
-      console.log('call...');
-      setChecked(checked);
-    }
-  }
+
+  let handleSwitch = useCallback((checked) => {
+    setChecked(checked);
+  });
+
   return (
     <>
-      <div>{count}</div>
+      <div
+        onClick={() => {
+          setChecked(true);
+        }}
+      >
+        reset to True
+      </div>
+      <div
+        onClick={() => {
+          setChecked(false);
+        }}
+      >
+        reset to false
+      </div>
+      <div>child state- {controllerChecked?"checked":"not checked"}</div>
       <Switch checked={controllerChecked} onChange={handleSwitch} />
     </>
   );
