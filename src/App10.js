@@ -8,17 +8,17 @@ function useCounter({ count: pCount }) {
 
   return { count, handleIncrement };
 }
-let Counter = React.memo(({ count, handleIncrement }) => {
-  console.log('Render Counter');
+let Counter = React.memo(({ count, handleIncrement, buttonProps }) => {
   return (
     <div>
       <span>Counter : {count}</span>
-      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleIncrement} {...buttonProps}>
+        Increment
+      </button>
     </div>
   );
 });
 let Switch = React.memo(({ state, toggle }) => {
-  console.log('Render Switch');
   return <div onClick={toggle}>{state ? 'ON' : 'OFFq'}</div>;
 });
 
@@ -32,7 +32,14 @@ function CounterController({ count: propsCount = 0 }) {
   return (
     <>
       <Switch state={state} toggle={() => setState(!state)} />
-      <Counter count={count} handleIncrement={handleIncrement} />
+      <Counter
+        count={count}
+        handleIncrement={handleIncrement}
+        buttonProps={{
+          onMouseLeave: handleIncrement,
+          onClick: () => {},
+        }}
+      />
     </>
   );
 }
