@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-function useCounter(pCount) {
+function useCounter({ count: pCount }) {
   let [count, setCount] = useState(pCount);
   let handleIncrement = useCallback(() => {
     setCount((count) => count + 1);
