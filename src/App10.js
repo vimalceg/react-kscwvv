@@ -19,7 +19,7 @@ let Counter = React.memo(({ count, handleIncrement, buttonProps }) => {
   );
 });
 let Switch = React.memo(({ state, toggle }) => {
-  return <div onClick={toggle}>{state ? 'ON' : 'OFFq'}</div>;
+  return <div onClick={toggle}>{state ? 'ON' : 'OFF'}</div>;
 });
 
 function CounterController({ count: propsCount = 0 }) {
