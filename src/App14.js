@@ -19,8 +19,8 @@ function useTextBox({ defaultValue = '', value: propsValue, onChange }, ref) {
   );
 
   useImperativeHandle(ref, () => ({
-    reset: () => {
-      setValue(defaultValue);
+    update: (value) => {
+      setValue(value);
     },
   }));
 
@@ -71,7 +71,9 @@ export default function Form() {
   return (
     <div>
       Form
-      <button onClick={() => setFormState({ search })}>Import</button>
+      <button onClick={() => handleFieldChange('search', 'testing..')}>
+        Import
+      </button>
       <SearchTextBoxController
         value={formState.search}
         onChange={(value) => {
@@ -83,8 +85,12 @@ export default function Form() {
 }
 
 var i = 0;
-function SearchTextBoxController({ defaultValue = '', value, onChange }) {
-  let [value, setValue] = useState(value || defaultValue);
+function SearchTextBoxController({
+  defaultValue = '',
+  value: propValue,
+  onChange,
+}) {
+  let [value, setValue] = useState(propValue || defaultValue);
   let ref = useRef();
   let handleChange = useCallback(
     debounce((value) => {
@@ -96,9 +102,14 @@ function SearchTextBoxController({ defaultValue = '', value, onChange }) {
     }, 100)
   );
 
+  useEffect(() => {
+    setValue(propValue);
+    ref.current.update(propValue);
+  }, [propValue]);
+
   return (
     <>
-      {/* <div
+      <div
         onClick={() => {
           setValue('vimal');
         }}
@@ -111,12 +122,12 @@ function SearchTextBoxController({ defaultValue = '', value, onChange }) {
         }}
       >
         reset to vimalesan
-      </div> */}
+      </div>
       <div>parent state- {value}</div>
       <br />
       <div
         onClick={() => {
-          ref.current && ref.current.reset();
+          ref.current && ref.current.update('');
         }}
       >
         reset
