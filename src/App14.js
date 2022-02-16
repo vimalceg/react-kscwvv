@@ -62,7 +62,7 @@ const debounce = (func, delay) => {
 };
 
 export default function Form() {
-  let [formState, setFormState] = useState({});
+  let [formState, setFormState] = useState({ search: '' });
   function handleFieldChange(name, value) {
     setFormState((formState) => {
       return { ...setFormState, [name]: value };
@@ -98,6 +98,7 @@ function SearchTextBoxController({
       setTimeout(() => {
         console.log('setTimeout', value);
         setValue(value);
+        onChange(value);
       }, [1000, 100][i % 2]);
     }, 100)
   );
