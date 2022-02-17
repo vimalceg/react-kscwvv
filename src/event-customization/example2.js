@@ -18,13 +18,12 @@ function useCounter({ count: pCount }, ref) {
 let Counter = React.memo(
   ({ count, handleIncrement, tagAttributeProps = {} }) => {
     let { spanProps = {}, buttonProps = {} } = tagAttributeProps;
-
+    let newButtonProps = { onClick: handleIncrement, ...buttonProps };
+    
     return (
       <div>
-        <span>Counter : {count}</span>
-        <button onClick={handleIncrement} {...buttonProps}>
-          Increment
-        </button>
+        <span {...spanProps}>Counter : {count}</span>
+        <button {...newButtonProps}>Increment</button>
       </div>
     );
   }
@@ -61,9 +60,7 @@ export default function App() {
         counterTagAttributeProps={{
           buttonProps: {
             onMouseLeave: handleButtonMouseLeave,
-            onClick: () => {
-              alert('1');
-            },
+            onClick: null,
           },
         }}
       />
@@ -72,9 +69,6 @@ export default function App() {
         counterTagAttributeProps={{
           buttonProps: {
             onMouseOver: handleButtonMouseOver,
-            onClick: () => {
-              alert('2');
-            },
           },
         }}
       />

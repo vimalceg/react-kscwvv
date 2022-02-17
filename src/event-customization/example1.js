@@ -15,6 +15,7 @@ function useCounter({ count: pCount }, ref) {
   }));
   return { count, handleIncrement };
 }
+
 let Counter = React.memo(({ count, handleIncrement, tagAttributeProps }) => {
   return (
     <div>
@@ -22,13 +23,13 @@ let Counter = React.memo(({ count, handleIncrement, tagAttributeProps }) => {
       <button onClick={handleIncrement} {...tagAttributeProps.buttonProps}>
         Increment
       </button>
+      <input type="text" {...tagAttributeProps.textProps} />
     </div>
   );
 });
 
 let CounterController = React.forwardRef(({ count: propsCount = 0 }, ref) => {
   let { count, handleIncrement } = useCounter({ count: propsCount }, ref);
-
   return (
     <>
       <Counter
