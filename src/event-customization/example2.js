@@ -15,18 +15,20 @@ function useCounter({ count: pCount }, ref) {
   }));
   return { count, handleIncrement };
 }
-let Counter = React.memo(({ count, handleIncrement, tagAttributeProps }) => {
-  let { spanProps = {}, buttonProps = {} } = tagAttributeProps;
-  console.log('vimal', spanProps);
-  return (
-    <div>
-      <span {...spanProps}>Counter : {count}</span>
-      <button onClick={handleIncrement} {...buttonProps}>
-        Increment
-      </button>
-    </div>
-  );
-});
+let Counter = React.memo(
+  ({ count, handleIncrement, tagAttributeProps = {} }) => {
+    let { spanProps = {}, buttonProps = {} } = tagAttributeProps;
+
+    return (
+      <div>
+        <span>Counter : {count}</span>
+        <button onClick={handleIncrement} {...buttonProps}>
+          Increment
+        </button>
+      </div>
+    );
+  }
+);
 
 let CounterController = React.forwardRef(
   ({ count: propsCount = 0, counterTagAttributeProps }, ref) => {
@@ -49,6 +51,9 @@ export default function App() {
   function handleButtonMouseLeave() {
     ref1.current && ref1.current.handleIncrement();
   }
+  function handleButtonMouseOver() {
+    ref2.current && ref2.current.handleIncrement();
+  }
   return (
     <React.Fragment>
       <CounterController
@@ -56,11 +61,23 @@ export default function App() {
         counterTagAttributeProps={{
           buttonProps: {
             onMouseLeave: handleButtonMouseLeave,
-            onClick: () => {},
+            onClick: () => {
+              alert('1');
+            },
           },
         }}
       />
-      <CounterController ref={ref2} />
+      <CounterController
+        ref={ref2}
+        counterTagAttributeProps={{
+          buttonProps: {
+            onMouseOver: handleButtonMouseOver,
+            onClick: () => {
+              alert('2');
+            },
+          },
+        }}
+      />
     </React.Fragment>
   );
 }
