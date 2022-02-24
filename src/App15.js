@@ -1,4 +1,5 @@
 import React, { useReducer, useState, useCallback } from 'react';
+
 function reducer(state, action) {
   switch (action.type) {
     case 'increment':
@@ -10,6 +11,7 @@ function reducer(state, action) {
   }
   return state;
 }
+
 function increment() {
   return { type: 'increment' };
 }
