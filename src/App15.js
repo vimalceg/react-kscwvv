@@ -41,9 +41,8 @@ function bindActions(obj, dispatch) {
     return res;
   }, {});
 }
-export default function () {
+function useCounter(props) {
   let [state, dispatch] = useReducer(reducer, 0);
-  let [data, setData] = useState(0);
 
   // let handleIncrement = useCallback(() => {
   //   dispatch(increment());
@@ -67,7 +66,13 @@ export default function () {
     },
     dispatch
   );
+  return { count: state, handleIncrement, handleDecrement, handleSetCounter };
+}
 
+export default function () {
+  let { count, handleDecrement, handleIncrement, handleSetCounter } =
+    useCounter();
+  let [data, setData] = useState(0);
   return (
     <React.Fragment>
       <div
@@ -78,7 +83,7 @@ export default function () {
         Other Render - {data}
       </div>
       <Counter
-        count={state}
+        count={count}
         onIncrement={handleIncrement}
         onDecrement={handleDecrement}
         onSetCounter={handleSetCounter}
