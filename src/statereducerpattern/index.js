@@ -2,13 +2,17 @@ import React from 'react';
 import { Accordion, AccordionItemWithContext } from './accordion';
 export default function App() {
   return (
-    <Accordion>
-      <h1>Dashboard Link</h1>
-      <AccordionItemWithContext index={0} heading="Accordion1">
+    <Accordion position="top">
+      <AccordionItemWithContext
+        index={0}
+        heading={({ position }) => <div>Accordion1</div>}
+      >
         Item1
       </AccordionItemWithContext>
-      <h1>Others</h1>
-      <AccordionItemWithContext index={1} heading="Accordion2">
+      <AccordionItemWithContext
+        index={1}
+        heading={({ position }) => <div>Accordion2</div>}
+      >
         Item2
       </AccordionItemWithContext>
     </Accordion>

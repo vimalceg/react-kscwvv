@@ -3,7 +3,7 @@ import AccordionContext from './AccordionContext';
 import { handleToggle } from './actions';
 import reducer from './reducer';
 
-export default function Accordion({ children }) {
+export default function Accordion({ children, position = 'bottom' }) {
   let [accordionState, dispatch] = useReducer(reducer, []);
 
   return (
@@ -13,6 +13,7 @@ export default function Accordion({ children }) {
         handleClick: (index) => {
           dispatch(handleToggle(index));
         },
+        position,
       }}
     >
       <div>{children}</div>
