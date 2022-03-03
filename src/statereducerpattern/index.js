@@ -7,6 +7,7 @@ export default function App() {
       <AccordionItemWithContext index={0} heading="Accordion1">
         Item1
       </AccordionItemWithContext>
+      <h1>Others</h1>
       <AccordionItemWithContext index={1} heading="Accordion2">
         Item2
       </AccordionItemWithContext>
