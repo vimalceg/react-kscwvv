@@ -1,11 +1,11 @@
 import * as CONST from './constants';
 
-function handleOpen() {
+export function handleOpen() {
   dispatch({ type: CONST.OPEN });
 }
-function handleClose() {
+export function handleClose() {
   dispatch({ type: CONST.CLOSE });
 }
-function handleToggle() {
+export function handleToggle() {
   dispatch({ type: CONST.TOGGLE });
 }
