@@ -1,22 +1,25 @@
 import * as CONST from './constants';
 /*
 index - accordion item index
-[true|false,true|false]
+[true|false,true|false] 
 */
-function reducer(state, action) {
-  switch (action.type) {
-    case CONST.OPEN:
+export default function reducer(state = [], { type, data }) {
+  switch (type) {
+    case CONST.OPEN: {
       let newState = state.slice();
-      newState[action.index] = true;
+      newState[data.index] = true;
       return newState;
-    case CONST.CLOSE:
+    }
+    case CONST.CLOSE: {
       let newState = state.slice();
-      newState[action.index] = false;
+      newState[data.index] = false;
       return newState;
-    case CONST.TOGGLE:
+    }
+    case CONST.TOGGLE: {
       let newState = state.slice();
-      newState[action.index] = !newState[action.index];
+      newState[data.index] = !newState[data.index];
       return newState;
+    }
   }
   return state;
 }
