@@ -39,7 +39,6 @@ function App() {
     <div>
       <WSContext.Provider value={msg}>
         <Counter />
-        
       </WSContext.Provider>
     </div>
   );
