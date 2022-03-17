@@ -1,13 +1,11 @@
 /* Recall Error handling */
 /* DON"T USE try catch - imperative */
 import React, { useState } from 'react';
-
-let Text = React.memo(
-  React.forwardRef((props, ref) => {
-    console.log('render...');
-    return <div ref={ref}>{props.children}</div>;
-  })
-);
+let Text = (props, ref) => {
+  console.log('render...');
+  return <div ref={ref}>{props.children}</div>;
+};
+Text = React.memo(React.forwardRef(Text));
 export default function App() {
   let [count, setCount] = useState(0);
   let ref = React.useRef();
