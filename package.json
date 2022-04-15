@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "baccano": "^2.1.1",
+    "null": "^2.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -13,6 +15,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "react-scripts": "latest"
+    "react-scripts": "latest",
+    "baccano": "2.1.1"
   }
 }
