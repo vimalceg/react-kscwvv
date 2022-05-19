@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 // import App from './event-customization/example2';
 // import { Counter as App } from './component-structure/Counter';
 // import App from './statereducerpattern';
-import MouseTracker from './renderprops/classbased/MouseTracker';
+// import MouseTracker from './renderprops/classbased/MouseTracker';
+import MouseTracker from './renderprops/functional/MouseTracker';
 ReactDOM.render(<MouseTracker />, document.getElementById('root'));
 
 // const divideBy = (n) => (x) => {
